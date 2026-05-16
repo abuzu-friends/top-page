@@ -46,6 +46,45 @@
         }, 3000);
             }
         }
+
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzv0F1UbuWQBGMvPwnI9cTahhJiey6F2-vPeCmYBKu2Odqb2cVxkMyqyqVoWhvBBVvN/exec";
+
+async function checkAccess() {
+  // URLからパラメータを取得
+  const urlParams = new URLSearchParams(window.location.search);
+  const key = urlParams.get('key');
+  const sort = window.location.search;
+
+  // 休止中リダイレクト（sort-pause）の場合はチェックをスキップして表示
+  if (sort.includes('sort-pause')) {
+    return; 
+  }
+
+  if (!key) {
+    // 鍵を持っていない（直接URLを叩いた）場合はトップへ戻す
+    alert("直接アクセスは禁止されています。");
+    window.location.href = "./index.html";
+    return;
+  }
+
+  try {
+    // GASに鍵の正当性を問い合わせる
+    const res = await fetch(`${WEBAPP_URL}?mode=verifyKey&key=${key}`);
+    const data = await res.json();
+
+    if (!data.valid) {
+      // 鍵が無効（時間切れ、または不正な鍵）の場合
+      alert("アクセス有効期限が切れたか、不正なアクセスです。");
+      window.location.href = "./index.html";
+    }
+    // 正しい場合はそのままページを表示し続ける
+  } catch (e) {
+    window.location.href = "./index.html";
+  }
+}
+
+// ページ読み込み時に実行
+window.onload = checkAccess;
     </script>
 </body>
 </html>
