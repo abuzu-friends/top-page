@@ -64,26 +64,7 @@ async function init() {
       setTimeout(() => {
         window.location.href = "./redirect.html?sort-pause";
       }, 2000);
-    } else {
-      // 通常稼働時は、GASから発行された一時的な鍵（accessKey）をURLに付けてメニューのリンク先を書き換える
-      const mainLink = document.querySelector('a[href*="sort-abuzu"]');
-      const keihinLink = document.querySelector('a[href*="sort-abuzu-keihin"]');
-      
-      if (mainLink && data.accessKey) {
-        mainLink.href = `./redirect.html?sort-abuzu&key=${data.accessKey}`;
-      }
-      if (keihinLink && data.accessKey) {
-        keihinLink.href = `./redirect.html?sort-abuzu-keihin&key=${data.accessKey}`;
-      }
-
-      // リンク書き換え完了後にメイン画面を表示
-      document.getElementById("mainView").style.display = "block";
     }
-  } catch (e) {
-    // 通信エラー時はメインを表示
-    document.getElementById("mainView").style.display = "block";
-  }
-}
 
 // ページ読み込み完了時に処理を実行する
 window.onload = init;
