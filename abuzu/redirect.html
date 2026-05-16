@@ -7,7 +7,7 @@
 </head>
     <!-- JavaScriptが動かなかった場合の保険として5秒後にトップへ -->
 <noscript>
-    <meta http-equiv="refresh" content="5; url=../index.html">
+    <meta http-equiv="refresh" content="5; url="index.html">
 </noscript>
 <body>
     <p>最新のページへ移動しています...</p><br><small>しばらくお待ちください。</small>
@@ -15,7 +15,7 @@
     <script>
         // --- 1. ここにファイルリストを手動で追加していきます ---
         const allFiles = [
-            "top.html",
+            "index.html",
             "abuzu.html",
             "abuzu-keihin.html"
         ];
@@ -41,7 +41,7 @@
             } else {
                 document.body.innerHTML = "<p>該当するページが見つかりませんでした。3秒後にトップページに戻ります。</p>";
                 setTimeout(() => {
-            window.location.href = "../index.html";
+            window.location.href = "index.html";
         }, 3000);
             }
         }
