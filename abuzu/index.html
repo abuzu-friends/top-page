@@ -46,19 +46,17 @@
   <p style="font-size: 0.8rem; color: #bbb; margin-top: 25px;">只今休止中です。</p>
 </div>
 <p>Copyright © 2026 アブーズフレンズ All Rights Reserved.</p>
-  <script>
-  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwHXnB2SZmgfi1n-4w8NuhnwiBj33I97vYM6WMr8bN3AJixFDuHk3G4Y8kLduuZM9it/exec";
-async function init() {  try {    const res = await fetch(`${WEBAPP_URL}?mode=checkMaintenance`);    const data = await res.json();        if (data.isMaintenance) {      // メッセージと期間を設定して画面に表示      document.getElementById("mMessage").textContent = data.message;      document.getElementById("mPeriod").textContent = "予定期間： " + data.period;      document.getElementById("maintenanceView").style.display = "block";            // 2秒（2000ミリ秒）後にリダイレクトを実行      setTimeout(() => {        window.location.href = "./redirect.html?sort-pause";      }, 2000);    } else {      document.getElementById("mainView").style.display = "block";    }  } catch (e) {    // 通信エラー時はメインを表示    document.getElementById("mainView").style.display = "block";  }}
-  // ※前後のHTMLやCSSはそのまま、script内のinit関数のみ差し替えます
+<script>
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwHXnB2SZmgfi1n-4w8NuhnwiBj33I97vYM6WMr8bN3AJixFDuHk3G4Y8kLduuZM9it/exec";
 
 async function init() {
   try {
-    // メンテナンスチェックと一緒に、アクセスキーも要求する
+    // メンテナンスチェックと一緒に、アクセスキー（accessKey）も要求する
     const res = await fetch(`${WEBAPP_URL}?mode=checkMaintenance`);
     const data = await res.json();
         
     if (data.isMaintenance) {
-      // 休止中の場合は2秒後に休止画面へリダイレクト
+      // 休止中の場合はメッセージと期間を画面に表示し、2秒後にリダイレクト
       document.getElementById("mMessage").textContent = data.message;
       document.getElementById("mPeriod").textContent = "予定期間： " + data.period;
       document.getElementById("maintenanceView").style.display = "block";
@@ -67,8 +65,7 @@ async function init() {
         window.location.href = "./redirect.html?sort-pause";
       }, 2000);
     } else {
-      // 通常稼働時は、GASから発行された一時的な鍵（accessKey）をURLに付けて遷移させる
-      // 例: ./redirect.html?sort-abuzu&key=xxxxxx のようになる
+      // 通常稼働時は、GASから発行された一時的な鍵（accessKey）をURLに付けてメニューのリンク先を書き換える
       const mainLink = document.querySelector('a[href*="sort-abuzu"]');
       const keihinLink = document.querySelector('a[href*="sort-abuzu-keihin"]');
       
@@ -79,6 +76,7 @@ async function init() {
         keihinLink.href = `./redirect.html?sort-abuzu-keihin&key=${data.accessKey}`;
       }
 
+      // リンク書き換え完了後にメイン画面を表示
       document.getElementById("mainView").style.display = "block";
     }
   } catch (e) {
@@ -86,7 +84,9 @@ async function init() {
     document.getElementById("mainView").style.display = "block";
   }
 }
-  
+
+// ページ読み込み完了時に処理を実行する
+window.onload = init;
 </script>
   <!--
 <script>
