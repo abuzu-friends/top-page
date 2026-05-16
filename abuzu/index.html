@@ -51,30 +51,6 @@ const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyKQ6G9CANpdXI6jK0W2
 
 async function init() {
   try {
-    // メンテナンスチェックと一緒に、アクセスキー（accessKey）も要求する
-    const res = await fetch(`${WEBAPP_URL}?mode=checkMaintenance`);
-    const data = await res.json();
-        
-    if (data.isMaintenance) {
-      // 休止中の場合はメッセージと期間を画面に表示し、2秒後にリダイレクト
-      document.getElementById("mMessage").textContent = data.message;
-      document.getElementById("mPeriod").textContent = "予定期間： " + data.period;
-      document.getElementById("maintenanceView").style.display = "block";
-            
-      setTimeout(() => {
-        window.location.href = "./redirect.html?sort-pause";
-      }, 2000);
-    }
-
-// ページ読み込み完了時に処理を実行する
-window.onload = init;
-</script>
-  <!--
-<script>
-const WEBAPP_URL = "";
-
-async function init() {
-  try {
     const res = await fetch(`${WEBAPP_URL}?mode=checkMaintenance`);
     const data = await res.json();
     
@@ -93,6 +69,5 @@ async function init() {
 
 window.onload = init;
 </script>
-  -->
 </body>
 </html>
