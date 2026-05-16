@@ -46,6 +46,9 @@
   <p style="font-size: 0.8rem; color: #bbb; margin-top: 25px;">只今休止中です。</p>
 </div>
 <p>Copyright © 2026 アブーズフレンズ All Rights Reserved.</p>
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzv0F1UbuWQBGMvPwnI9cTahhJiey6F2-vPeCmYBKu2Odqb2cVxkMyqyqVoWhvBBVvN/exec";
+async function init() {  try {    const res = await fetch(`${WEBAPP_URL}?mode=checkMaintenance`);    const data = await res.json();        if (data.isMaintenance) {      // メッセージと期間を設定して画面に表示      document.getElementById("mMessage").textContent = data.message;      document.getElementById("mPeriod").textContent = "予定期間： " + data.period;      document.getElementById("maintenanceView").style.display = "block";            // 2秒（2000ミリ秒）後にリダイレクトを実行      setTimeout(() => {        window.location.href = "./redirect.html?sort-pause";      }, 2000);    } else {      document.getElementById("mainView").style.display = "block";    }  } catch (e) {    // 通信エラー時はメインを表示    document.getElementById("mainView").style.display = "block";  }}
+  <!--
 <script>
 const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzv0F1UbuWQBGMvPwnI9cTahhJiey6F2-vPeCmYBKu2Odqb2cVxkMyqyqVoWhvBBVvN/exec";
 
@@ -69,5 +72,6 @@ async function init() {
 
 window.onload = init;
 </script>
+  -->
 </body>
 </html>
