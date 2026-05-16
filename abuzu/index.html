@@ -46,8 +46,48 @@
   <p style="font-size: 0.8rem; color: #bbb; margin-top: 25px;">只今休止中です。</p>
 </div>
 <p>Copyright © 2026 アブーズフレンズ All Rights Reserved.</p>
+  <script>
   const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzv0F1UbuWQBGMvPwnI9cTahhJiey6F2-vPeCmYBKu2Odqb2cVxkMyqyqVoWhvBBVvN/exec";
 async function init() {  try {    const res = await fetch(`${WEBAPP_URL}?mode=checkMaintenance`);    const data = await res.json();        if (data.isMaintenance) {      // メッセージと期間を設定して画面に表示      document.getElementById("mMessage").textContent = data.message;      document.getElementById("mPeriod").textContent = "予定期間： " + data.period;      document.getElementById("maintenanceView").style.display = "block";            // 2秒（2000ミリ秒）後にリダイレクトを実行      setTimeout(() => {        window.location.href = "./redirect.html?sort-pause";      }, 2000);    } else {      document.getElementById("mainView").style.display = "block";    }  } catch (e) {    // 通信エラー時はメインを表示    document.getElementById("mainView").style.display = "block";  }}
+  // ※前後のHTMLやCSSはそのまま、script内のinit関数のみ差し替えます
+
+async function init() {
+  try {
+    // メンテナンスチェックと一緒に、アクセスキーも要求する
+    const res = await fetch(`${WEBAPP_URL}?mode=checkMaintenance`);
+    const data = await res.json();
+        
+    if (data.isMaintenance) {
+      // 休止中の場合は2秒後に休止画面へリダイレクト
+      document.getElementById("mMessage").textContent = data.message;
+      document.getElementById("mPeriod").textContent = "予定期間： " + data.period;
+      document.getElementById("maintenanceView").style.display = "block";
+            
+      setTimeout(() => {
+        window.location.href = "./redirect.html?sort-pause";
+      }, 2000);
+    } else {
+      // 通常稼働時は、GASから発行された一時的な鍵（accessKey）をURLに付けて遷移させる
+      // 例: ./redirect.html?sort-abuzu&key=xxxxxx のようになる
+      const mainLink = document.querySelector('a[href*="sort-abuzu"]');
+      const keihinLink = document.querySelector('a[href*="sort-abuzu-keihin"]');
+      
+      if (mainLink && data.accessKey) {
+        mainLink.href = `./redirect.html?sort-abuzu&key=${data.accessKey}`;
+      }
+      if (keihinLink && data.accessKey) {
+        keihinLink.href = `./redirect.html?sort-abuzu-keihin&key=${data.accessKey}`;
+      }
+
+      document.getElementById("mainView").style.display = "block";
+    }
+  } catch (e) {
+    // 通信エラー時はメインを表示
+    document.getElementById("mainView").style.display = "block";
+  }
+}
+  
+</script>
   <!--
 <script>
 const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzv0F1UbuWQBGMvPwnI9cTahhJiey6F2-vPeCmYBKu2Odqb2cVxkMyqyqVoWhvBBVvN/exec";
