@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>リダイレクトしています…</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <!-- JavaScriptが動かなかった場合の保険として5秒後にトップへ -->
+<noscript>
+    <meta http-equiv="refresh" content="5; url=../index.html">
+</noscript>
+<body>
+<h1>リダイレクトしています…</h1>
+<small>しばらくお待ちください。別ページに移動しない場合は、再読み込みをお試しください。</small>
+<hr>
+<p>© Copylight 2026 HomeMade Tools Project All Rights Reserved.</p>
+<script>
+        const allowedUrls = [
+            "https://www.mf.ccnw.ne.jp/bisan.takkyu-taikai/", 
+            "https://sites.google.com/view/", // カッコを修正しスラッシュを追加
+            "https://www.mf.ccnw.ne.jp/bisan.takkyu-taikai/abuzu/" // スラッシュを追加
+        ];
+
+        const query = window.location.search.substring(1);
+
+        if (query) {
+            // 1. 外部URL（http...）が直接指定された場合の処理
+            if (query.startsWith("http")) {
+                const isAllowed = allowedUrls.some(allowedUrl => query.startsWith(allowedUrl));
+
+                if (isAllowed) {
+                    const userConfirmed = confirm("リダイレクト先は " + query + " です。\n移動しますか？");
+                    if (userConfirmed) {
+                        window.location.href = query;
+                    } else {
+                        document.body.innerHTML = "<p>キャンセルしました。<a href='index.html'>トップへ戻る</a></p>";
+                    }
+                } else {
+                    document.body.innerHTML = "<p>許可されていないURLへのリダイレクトが実行されました。</p>";
+                }
+            } 
+            // 2. ショートカット（google, senkyo, himajinなど）の処理
+            else if (query === "bisan") {
+                window.location.href = "https://www.mf.ccnw.ne.jp/bisan-takkyu-taikai/";
+            } 
+            else if (query.startsWith("keihin")) {
+                // 例: ?senkyo -> .../ts-site-senkyo/senkyo になるため、必要に応じて調整
+                window.location.href = "https://www.mf.ccnw.ne.jp/bisan.takkyu-taikai/keihin_list/redirect.html?sort-keihin";
+            }
+            else if (query.startsWith("tokusetu")) {
+                window.location.href = "https://www.mf.ccnw.ne.jp/bisan.takkyu-taikai/html/redirect.html?sort-tokusetu";
+            }
+            // 3. それ以外は内部の redirect.html へ（日付検索用）
+            else {
+                window.location.href = "./abuzu/redirect.html?sort-" + query;
+            }
+        } else {
+            document.body.innerHTML = "<p>パラメータが指定されていません。</p>";
+        }
+    </script>
+</body>
+</html>
