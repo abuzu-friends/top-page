@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>アブーズフレンズ - 掲載ページ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+            font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO';
+            src: url('https://abuzu-friends.github.io/top-page/fonts/HGRSKP.TTF') format('truetype');
+            font-weight: bold;
+        }
+
+        @font-face {
+            font-family: 'HGSeikaishotaiPRO';
+            src: url('https://abuzu-friends.github.io/top-page/fonts/HGRSKP.TTF') format('truetype');
+            font-weight: bold;
+        }
+
+        @font-face {
+            font-family: 'French';
+            src: url('https://abuzu-friends.github.io/top-page/fonts/FRSCRIPT.TTF') format('truetype');
+            font-weight: bold;
+        }
+
+        @font-face {
+            font-family: 'HGP行書体';
+            src: url('https://abuzu-friends.github.io/top-page/fonts/HGRGY.TTC') format('truetype');
+            font-weight: bold;
+        }
+
+        @font-face {
+            font-family: 'MS P明朝';
+            src: url('https://abuzu-friends.github.io/top-page/fonts/msmincho.ttc') format('truetype');
+            font-weight: bold;
+        }
+
+        @font-face {
+            font-family: 'MS PMincho';
+            src: url('https://abuzu-friends.github.io/top-page/fonts/msmincho.ttc') format('truetype');
+            font-weight: bold;
+        }
+
+
+        @font-face {
+            font-family: 'POP';
+            src: url('https://abuzu-friends.github.io/top-page/fonts/HGRPP1.TTC') format('truetype');
+            font-weight: bold;
+        }
+
+
+
+        a {
+            outline: none;
+            text-decoration: underline;
+        }
+
+            a:link {
+                color: #0000FF;
+            }
+
+            a:visited {
+                color: #0000FF;
+            }
+
+            a:active {
+                color: #0000FF;
+            }
+
+            a:link {
+                color: #0000FF;
+                transition: 0.4s;
+            }
+
+            a:hover {
+                color: red;
+            }
+
+        .a-red {
+            color: blue;
+            text-decoration: none; /* 下線を消したい場合は追加 */
+        }
+
+        /* a-greenというクラスがついたaタグだけを緑色にする */
+        .a-green {
+            color: blue;
+            text-decoration: none; /* 下線を消したい場合は追加 */
+        }
+
+            /* マウスを乗せたときの色を変えたい場合はこちら */
+            .a-green:hover {
+                color: green;
+            }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            /* 初期状態ではテキスト選択を禁止 */
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .toc {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: clamp(24px, 5vw, 40px);
+        }
+
+        h2 {
+            font-size: clamp(20px, 4vw, 32px);
+        }
+
+        section {
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .border-box {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- 保護用のスタイル --- */
+        #protected-content {
+            display: none;
+        }
+
+        .unlock-msg {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px 20px;
+            background: #fffbe6;
+            border: 2px solid #ffe58f;
+            border-radius: 10px;
+        }
+
+            .unlock-msg h2 {
+                margin-bottom: 10px;
+                color: #856404;
+            }
+
+            .unlock-msg p {
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .unlock-msg button {
+                padding: 12px 24px;
+                font-size: 16px;
+                cursor: pointer;
+                background: #faad14;
+                border: none;
+                color: white;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+                .unlock-msg button:hover {
+                    background: #d48806;
+                }
+
+        .container {
+            display: inline-block;
+            text-align: center;
+            background: white;
+            padding: 1.5rem 2.5rem; /* 左右に少し余裕を持たせています */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            /* 念のため、画面からはみ出さないよう設定 */
+            max-width: 90%;
+            white-space: nowrap; /* テキストが勝手に改行されないようにします */
+        }
+
+        #countdown {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e63946;
+        }
+
+        /* --- トップへ戻るボタンのスタイル --- */
+        #pagetop-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #0000FF;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+            opacity: 0; /* 最初は隠す */
+            visibility: hidden; /* 最初は隠す */
+            transition: 0.3s;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+            #pagetop-btn:hover {
+                background: red;
+                color: #fff;
+            }
+
+            /* 表示された時の状態 */
+            #pagetop-btn.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+        /* 外側の枠 */
+        .video-box {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            max-width: 600px;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* 一行に並べるための設定 */
+        summary {
+            display: flex;
+            justify-content: space-between; /* 両端に配置 */
+            align-items: center; /* 上下の高さを合わせる */
+            padding: 15px 20px;
+            cursor: pointer;
+            list-style: none; /* 標準の三角を消す */
+            background-color: #f9f9f9;
+        }
+
+            /* Safariなどで三角を消すための設定 */
+            summary::-webkit-details-marker {
+                display: none;
+            }
+
+        /* 説明テキストの部分 */
+        .description-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        /* 「表示」ボタンの見た目 */
+        .btn-toggle {
+            display: inline-block;
+            background-color: #888;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 4px;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+
+        summary:hover .btn-toggle {
+            background-color: #666;
+        }
+
+        /* ★ここがポイント：開いている時の文字の切り替え★ */
+        /* detailsが開いている時(open)、btn-toggleの中の「表示」を消す */
+        details[open] .btn-display {
+            display: none;
+        }
+
+        /* detailsが閉じている時、btn-toggleの中の「閉じる」を消す */
+        details:not([open]) .btn-close {
+            display: none;
+        }
+
+        /* 動画が表示されるエリア */
+        .video-content {
+            padding: 20px;
+            text-align: center;
+            background-color: #eee;
+            border-top: 1px solid #ddd;
+        }
+
+        video {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        /* --- 右上のロード中インジケーター --- */
+        #mini-loader {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* 黒背景（透過） */
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.4s ease;
+            pointer-events: none; /* 下のコンテンツの操作を邪魔しない */
+        }
+
+        /* 小さなくるくるアニメーション */
+        .dot-spin {
+            width: 12px;
+            height: 12px;
+            margin-right: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 読み込み完了後に消す用 */
+        .hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body id="top">
+
+    <a href="#page_top" id="pagetop-btn">TOP</a>
+
+    <!-- ロード中インジケーター -->
+    <div id="mini-loader">
+        <div class="dot-spin"></div>
+        <span>ロード中...</span>
+    </div>
+
+    <section id="page_top">
+        <font color="red">
+            <i><b><h3 style="font-family: 'French', 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">ABUZU FRIENDS</h3></b></i>
+        </font>
+        <font color="blue">
+            <i><b><h3 style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">アブーズフレンズ</h3></b></i>
+        </font>
+        <small><p style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">ツールで加工したものを掲載しています。</p></small>
+    </section>
+
+    <div id="auth-gateway" class="unlock-msg" style="display:none;">
+        <h2 id="gateway-title" style="font-family: 'HGP行書体', 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">パスワードが必要です。パスワードがわからない場合、一般公開日までお待ちください。</h2>
+        <p id="gateway-period" style="font-family: 'MS P明朝', serif;">【一般公開日: 2026年7月5日】</p>
+        <button id="unlock-button" onclick="checkPassword()">パスワードを入力して表示する</button>
+    </div>
+
+ <div id="protected-content">
+        <br>
+        <!--
+        <div style="font-family: 'MS P明朝', serif;">
+        <div class="container">
+                <div id="countdown">計算中...</div>
+            </div>
+        </div>
+        -->
+        <small><p style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">公開期間: 2026年7月5日～2026年12月31日</small>
+        <hr>
+        <h1 style="font-family: 'HGP行書体', 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">アブーズフレンズ</h1>
+
+
+        <!--
+          <h4 style="font-family: 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">注意事項</h4>
+            <p style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">文章</p>
+        -->
+        </font>
+        <div class="toc">
+            <h3 style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">・目次</h3>
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+                <h3 style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">・建物</h3>
+                <a href="#mokuji1" class="a-green" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">移動</a>
+            </div>
+            <ul>
+                <li><a href="#section-file1" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">シンデレラ城の画像</a></li>
+                <li><a href="#section-file2" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">アレンデール城(簡易)の画像</a></li>
+                <li><a href="#section-file3" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">ケープコッドの画像</a></li>
+                <li><a href="#section-file4" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">アレンデール城(本格的)の画像</a></li>
+                <li><a href="#section-file5" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">ミラコスタの画像</a></li>
+                <li><a href="#section-file6" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">ビレッジストアの画像</a></li>
+</ul>
+<div style="display: flex; align-items: baseline; gap: 10px;">
+    <h3 style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">・その他</h3>
+    <a href="#mokuji2" class="a-green" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">移動</a>
+</div>
+<ul>
+                <li><a href="#section-file7" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">ジャンカニ(自作)</a></li>
+                <li><a href="#section-file8" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">コブラの罠(自作)</a></li>
+                <li><a href="#section-file9" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">ケープコッドの建物の一部</a></li>
+                <li><a href="#back_homepage_top" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">ページ最下部へ移動</a></li>
+            </ul>
+        </div>
+        <br>
+        <section id="mokuji1">
+            <h2 style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">・建物</h2>
+        </section>
+        <section id="section-file1">
+            <div class="">
+                <div class="video-box">
+                    <details>
+                        <summary>
+                            <span class="description-text">シンデレラ城の画像</span>&nbsp;
+
+                            <div class="btn-toggle">
+                                <span class="btn-display">表示</span>
+                                <span class="btn-close">閉じる</span>
+                            </div>
+                        </summary>
+                        <img src="./images/shind2026.png">
+                        <!--
+                                    <div class="video-content">
+                                        <video src="" controls width="480">
+                                            お使いのブラウザは動画の再生に対応していません。
+                                        </video>
+                        -->
+                </div>
+                </details>
+            </div>
+
+        </section>
+
+        <section id="section-file2">
+            <div class="">
+                <div class="video-box">
+                    <details>
+                        <summary>
+                            <span class="description-text">アレンデール城(キューライン)の画像</span>&nbsp;
+
+                            <div class="btn-toggle">
+                                <span class="btn-display">表示</span>
+                                <span class="btn-close">閉じる</span>
+                            </div>
+                        </summary>
+                        <img src="./images/arend2026.png">
+                        <!--
+                                    <div class="video-content">
+                                        <video src="" controls width="480">
+                                            お使いのブラウザは動画の再生に対応していません。
+                                        </video>
+                        -->
+                </div>
+                </details>
+            </div>
+ 
+    
+    </section>
+        <section id="section-file3">
+            <div class="">
+                <div class="video-box">
+                    <details>
+                        <summary>
+                            <span class="description-text">ケープコッドの画像</span>&nbsp;
+
+                            <div class="btn-toggle">
+                                <span class="btn-display">表示</span>
+                                <span class="btn-close">閉じる</span>
+                            </div>
+                        </summary>
+                        <img src="./images/k2026.png">
+                        <img src="./images/k2026_2.png">
+                        <!--
+                                    <div class="video-content">
+                                        <video src="" controls width="480">
+                                            お使いのブラウザは動画の再生に対応していません。
+                                        </video>
+                        -->
+                </div>
+                </details>
+            </div>
+    </section>
+
+        <section id="section-file4">
+            <div class="">
+                <div class="video-box">
+                    <details>
+                        <summary>
+                            <span class="description-text">アレンデール城(本格的)の画像</span>&nbsp;
+
+                            <div class="btn-toggle">
+                                <span class="btn-display">表示</span>
+                                <span class="btn-close">閉じる</span>
+                            </div>
+                        </summary>
+                        <img src="./images/arend2026_2.png">
+                        <img src="./images/arend2026_3.png">
+                        <img src="./images/arend2026_5.png">
+                        <img src="./images/arend2026_6.png">
+                        <!--
+                                    <div class="video-content">
+                                        <video src="" controls width="480">
+                                            お使いのブラウザは動画の再生に対応していません。
+                                        </video>
+                        -->
+                </div>
+                </details>
+            </div>
+    </section>
+
+        <section id="section-file5">
+            <div class="">
+                <div class="video-box">
+                    <details>
+                        <summary>
+                            <span class="description-text">ミラコスタの画像</span>&nbsp;
+
+                            <div class="btn-toggle">
+                                <span class="btn-display">表示</span>
+                                <span class="btn-close">閉じる</span>
+                            </div>
+                        </summary>
+                        <img src="./images/mira2026.png">
+                        <img src="./images/mira2026_2.png">
+                        <img src="./images/mira2026_3.png">
+                        <!--
+                                    <div class="video-content">
+                                        <video src="" controls width="480">
+                                            お使いのブラウザは動画の再生に対応していません。
+                                        </video>
+                        -->
+                </div>
+                </details>
+            </div>
+    </section>
+
+        <section id="section-file6">
+            <div class="">
+                <div class="video-box">
+                    <details>
+                        <summary>
+                            <span class="description-text">ビレッジストアの画像</span>&nbsp;
+
+                            <div class="btn-toggle">
+                                <span class="btn-display">表示</span>
+                                <span class="btn-close">閉じる</span>
+                            </div>
+                        </summary>
+                        <img src="./images/aunt2026.png">
+                        <!--
+                                    <div class="video-content">
+                                        <video src="" controls width="480">
+                                            お使いのブラウザは動画の再生に対応していません。
+                                        </video>
+                        -->
+                </div>
+                </details>
+            </div>
+    </section>
+
+        <section id="mokuji2">
+            <h2 style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">・その他</h2>
+        </section>
+
+        <section id="section-file7">
+            <div class="">
+                <div class="video-box">
+                    <details>
+                        <summary>
+                            <span class="description-text">ジャンカニ(自作)</span>&nbsp;
+
+                            <div class="btn-toggle">
+                                <span class="btn-display">表示</span>
+                                <span class="btn-close">閉じる</span>
+                            </div>
+                        </summary>
+                        <img src="./images/j2026.jpg">
+                        <!--
+                                    <div class="video-content">
+                                        <video src="" controls width="480">
+                                            お使いのブラウザは動画の再生に対応していません。
+                                        </video>
+                        -->
+                </div>
+                </details>
+            </div>
+    </section>
+
+        <section id="section-file8">
+            <div class="">
+                <div class="video-box">
+                    <details>
+                        <summary>
+                            <span class="description-text">コブラの罠(自作)</span>&nbsp;
+
+                            <div class="btn-toggle">
+                                <span class="btn-display">表示</span>
+                                <span class="btn-close">閉じる</span>
+                            </div>
+                        </summary>
+                        <img src="./images/c2026.jpg">
+                        <!--
+                                    <div class="video-content">
+                                        <video src="" controls width="480">
+                                            お使いのブラウザは動画の再生に対応していません。
+                                        </video>
+                        -->
+                </div>
+                </details>
+            </div>
+    </section>
+
+        <section id="section-file9">
+            <div class="">
+                <div class="video-box">
+                    <details>
+                        <summary>
+                            <span class="description-text">ケープコッドの建物の一部</span>&nbsp;
+
+                            <div class="btn-toggle">
+                                <span class="btn-display">表示</span>
+                                <span class="btn-close">閉じる</span>
+                            </div>
+                        </summary>
+                        <img src="./images/ca2026.jpg">
+                        <!--
+                                    <div class="video-content">
+                                        <video src="" controls width="480">
+                                            お使いのブラウザは動画の再生に対応していません。
+                                        </video>
+                        -->
+                </div>
+                </details>
+            </div>
+    </section>
+</div>
+    <hr>
+    <br>
+    <center>
+        <section id="back_homepage_top" class="border-box">
+            <a href="#page_top" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">このページのトップへ戻る</a><br>
+            <a href="./redirect.html?sort-index" class="" style="font-family: 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">トップページへ戻る</a>
+        </section>
+        <br>
+        <center>
+            <p style="font-family: 'HGP行書体', 'HG正楷書体PRO', 'HGSeikaishotaiPRO', 'MS PMincho', 'MS P明朝', 'Hiragino Mincho ProN', serif;">Copyright &#169; 2026 アブーズフレンズ All Rights Reserved.</p>
+        </center>
+
+        <script>
+            // --- 公開設定 ---
+            const RELEASE_DATE = 20260705;    // 公開開始日 (YYYYMMDD)
+            const EXPIRATION_DATE = 20261231; // 公開終了日 (YYYYMMDD) ←【新しく追加】
+            const PASSWORD = "admin_abuzu";
+            let isUnlocked = false;
+
+            // 右クリック禁止
+            document.addEventListener('contextmenu', (e) => {
+                if (!isUnlocked) {
+                    e.preventDefault();
+                    alert("このページでは右クリックは禁止されています。");
+                }
+            });
+
+            // キーボード制限
+            document.addEventListener('keydown', (e) => {
+                if (!isUnlocked) {
+                    if (e.key === "F12" || (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "s" || e.key === "S"))) {
+                        e.preventDefault();
+                    }
+                }
+            });
+
+            function checkPassword() {
+                const userInput = window.prompt("パスワードを入力してください：");
+                if (userInput === PASSWORD) {
+                    unlockPage();
+                } else if (userInput !== null) {
+                    alert("パスワードが違います。");
+                }
+            }
+
+            function unlockPage() {
+                isUnlocked = true;
+                document.getElementById('protected-content').style.display = 'block';
+                document.getElementById('auth-gateway').style.display = 'none';
+                // 解除後は制限を解除
+                document.body.style.userSelect = "auto";
+                document.body.style.webkitUserSelect = "auto";
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const now = new Date();
+                const todayNum = parseInt(`${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`);
+
+                // 公開期間内かどうかの判定
+                if (todayNum >= RELEASE_DATE && todayNum <= EXPIRATION_DATE) {
+                    // 公開期間中
+                    unlockPage();
+                } else if (todayNum > EXPIRATION_DATE) {
+                    // 公開終了後
+                    document.getElementById('auth-gateway').style.display = 'block';
+                    document.getElementById('gateway-title').textContent = "閲覧できません。";
+                    document.getElementById('gateway-period').textContent = "ページの公開を終了いたしました。";
+                    document.getElementById('unlock-button').style.display = 'none'; // パスワードボタンを隠す
+                } else {
+                    // 公開前
+                    document.getElementById('auth-gateway').style.display = 'block';
+                }
+
+                // --- 個別リンクのパスワード保護機能の追加 ---
+                const protectedLinks = document.querySelectorAll('a[password]');
+                protectedLinks.forEach(link => {
+                    link.textContent = "保護中: " + link.textContent;
+
+                    link.addEventListener('click', (e) => {
+                        const correctPass = link.getAttribute('password');
+                        const userInput = window.prompt("パスワードを入力してください。");
+
+                        if (userInput === null) {
+                            e.preventDefault();
+                        } else if (userInput !== correctPass) {
+                            alert("パスワードが正しくありません。");
+                            e.preventDefault();
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            function updateCountdown() {
+                const now = new Date();
+                const targetDayStart = new Date('2026-12-31T00:00:00');
+                const targetDayEnd = new Date('2026-12-31T23:59:59');
+
+                const countdownElement = document.getElementById('countdown');
+
+                if (now < targetDayStart) {
+                    const diff = targetDayStart - now;
+                    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                    countdownElement.textContent = `公開終了まで…あと${days}日`;
+                } else if (now >= targetDayStart && now < targetDayEnd) {
+                    countdownElement.textContent = "本日をもちまして公開を終了いたします。";
+                } else {
+                    countdownElement.textContent = "公開を終了しました。";
+                }
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 60000);
+        </script>
+        <script>
+            const pagetopBtn = document.getElementById('pagetop-btn');
+            const pageTopSection = document.getElementById('page_top');
+
+            window.addEventListener('scroll', () => {
+                const rect = pageTopSection.getBoundingClientRect();
+                if (rect.bottom < 0) {
+                    pagetopBtn.classList.add('show');
+                } else {
+                    pagetopBtn.classList.remove('show');
+                }
+            });
+        </script>
+        <script>
+            // 全リソースの読み込みが完了したら実行
+            window.onload = function () {
+                const loader = document.getElementById('mini-loader');
+                loader.classList.add('hidden');
+            };
+        </script>
+</body>
+</html>
